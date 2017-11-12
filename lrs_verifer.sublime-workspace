@@ -1,0 +1,459 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"con",
+				"console.log();"
+			],
+			[
+				"u",
+				"url.Url();"
+			],
+			[
+				"i",
+				"i"
+			],
+			[
+				"p",
+				"p\tTag"
+			],
+			[
+				"time",
+				"time_R"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "index.js",
+			"settings":
+			{
+				"buffer_size": 9091,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "readme.txt",
+			"settings":
+			{
+				"buffer_size": 321,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 354.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"view",
+				"View: Toggle Side Bar"
+			],
+			[
+				"file",
+				"View: Toggle Open Files in Side Bar"
+			],
+			[
+				"theme",
+				"UI: Select Theme"
+			],
+			[
+				"pack",
+				"Package Control: Install Package"
+			],
+			[
+				"men",
+				"View: Toggle Menu"
+			],
+			[
+				"them",
+				"UI: Select Theme"
+			],
+			[
+				"the",
+				"UI: Select Theme"
+			],
+			[
+				"packa",
+				"Package Control: Install Package"
+			],
+			[
+				"package",
+				"Package Control: List Packages"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 480.0
+	},
+	"console":
+	{
+		"height": 395.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe013ee18cced0ef93d5f746d80ef60'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)",
+			"import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/moray/AppData/Roaming/Sublime Text 3/Packages/Package Control.sublime-package",
+		"/C/Users/moray/Documents/JS/lrs_verifer/structure.xml",
+		"/C/Users/moray/Downloads/Big Brother 0.9.0.006 + Ikarumod 0.5.2G/0.9.0.006/Mod.txt",
+		"/C/Users/moray/Documents/JS/nodejs_kk_parser/data.json",
+		"/C/Users/moray/Documents/JS/lrs_verifer/index.js",
+		"/C/Users/moray/Documents/JS/nodejs_kk_parser/index.js",
+		"/C/Program Files/OpenVPN/config/client.ovpn",
+		"/C/Users/moray/Documents/JS/lrs_verifer/attempts.js",
+		"/C/Users/moray/Documents/JS/start.bat",
+		"/C/Users/moray/Desktop/client.ovpn",
+		"/C/Users/moray/Desktop/задачи на ноябрь.txt",
+		"/C/Users/moray/Downloads/pastebin.com PlayHome/Required Plugins/IPA_3.3.txt",
+		"/C/Users/moray/Documents/JS/nodejs_kk_parser/node_modules/needle/examples/parsed-stream.js",
+		"/C/Users/moray/Documents/JS/nodejs_kk_parser/node_modules/needle/examples/multipart-stream.js",
+		"/C/Users/moray/Documents/JS/nodejs_kk_parser/node_modules/needle/examples/download-to-file.js",
+		"/C/Users/moray/Documents/JS/nodejs_kk_parser/node_modules/needle/package.json",
+		"/C/Users/moray/Documents/JS/nodejs_kk_parser/node_modules/needle/lib/needle.js",
+		"/C/Users/moray/Documents/JS/nodejs_kk_parser/node_modules/needle/lib/parsers.js",
+		"/C/Users/moray/Documents/JS/nodejs_kk_parser/node_modules/cheerio/lib/cheerio.js",
+		"/C/Users/moray/Documents/JS/nodejs_kk_parser/node_modules/cheerio/index.js",
+		"/C/Users/moray/Desktop/data.json",
+		"/C/Users/moray/Documents/JS/nodejs_kk_parser/фантастика.json",
+		"/C/Users/moray/Documents/JS/nodejs_kk_parser/package.json",
+		"/C/Users/moray/Documents/JS/nodejs_kk_parser/package-lock.json",
+		"/C/Users/moray/Google Диск/Курсометр 2.0/Документация/structure.xml",
+		"/C/Users/moray/Documents/JS/site_speed_load/manifest.json",
+		"/C/Users/moray/Documents/JS/site_speed_load/background.js",
+		"/C/Users/moray/Documents/JS/site_speed_load/content.js",
+		"/C/Users/moray/Documents/JS/site_speed_load/settings.js",
+		"/C/Users/moray/Documents/JS/site_speed_load/settings.html",
+		"/C/Users/moray/Documents/JS/site_speed_load/popup.js",
+		"/C/Users/moray/Documents/JS/site_speed_load/popup.css",
+		"/C/Users/moray/Documents/JS/site_speed_load/popup.html",
+		"/C/Users/moray/Desktop/Фиксы по нотификациям РБ.txt",
+		"/C/Users/moray/Desktop/structure.xml",
+		"/C/Users/moray/AppData/Local/Temp/Temp1_site_speed_load.zip/manifest.json",
+		"/C/Users/moray/Downloads/index.php",
+		"/C/Users/moray/Documents/JS/hello.js",
+		"/C/Users/moray/AppData/Local/lxss/home/Morayg/.ssh/id_rsa.pub",
+		"/C/Users/moray/Google Диск/Курсометр 2.0/Технические записки и черновики брифов/answered.txt",
+		"/C/Users/moray/Documents/JS/Новый текстовый документ.txt",
+		"/C/Users/moray/AppData/Local/lxss/home/Morayg/.bashrc",
+		"/C/Users/moray/Documents/JS/git_public",
+		"/C/Users/moray/Documents/JS/simple1.js",
+		"/C/Users/moray/Documents/JS/my_static_file_server.js",
+		"/C/Users/moray/AppData/Roaming/Sublime Text 3/Packages/Nodejs/Nodejs.sublime-settings",
+		"/C/Users/moray/OneDrive/Documents/ImageSpark/Курсометр/тестовые данные для отчета по тестам.txt",
+		"//192.168.0.3/files_i_kalygin/projects/vshs_rb_sberbank_pervyj/Исходники/icons/icons _vshs/Pif/svg/icon_25.svg",
+		"//192.168.0.3/files_i_kalygin/projects/vshs_rb_sberbank_pervyj/Исходники/icons/icons _vshs/Pif/svg/icon_24.svg",
+		"//192.168.0.3/files_i_kalygin/projects/vshs_rb_sberbank_pervyj/Исходники/icons/icons _vshs/Pif/svg/icon_23.svg",
+		"//192.168.0.3/files_i_kalygin/projects/vshs_rb_sberbank_pervyj/Исходники/icons/icons _vshs/Pif/svg/icon_22.svg",
+		"//192.168.0.3/files_i_kalygin/projects/vshs_rb_sberbank_pervyj/Исходники/icons/icons _vshs/Pif/svg/icon_21.svg",
+		"//192.168.0.3/files_i_kalygin/projects/vshs_rb_sberbank_pervyj/Исходники/icons/icons _vshs/Pif/svg/icon_20.svg",
+		"//192.168.0.3/files_i_kalygin/projects/vshs_rb_sberbank_pervyj/Исходники/icons/icons _vshs/Pif/svg/icon_19.svg",
+		"//192.168.0.3/files_i_kalygin/projects/vshs_rb_sberbank_pervyj/Исходники/icons/icons _vshs/Pif/svg/icon_18.svg",
+		"//192.168.0.3/files_i_kalygin/projects/vshs_rb_sberbank_pervyj/Исходники/icons/icons _vshs/Pif/svg/icon_17.svg",
+		"//192.168.0.3/files_i_kalygin/projects/vshs_rb_sberbank_pervyj/Исходники/icons/icons _vshs/Pif/svg/icon_16.svg",
+		"//192.168.0.3/files_i_kalygin/projects/vshs_rb_sberbank_pervyj/Исходники/icons/icons _vshs/Pif/svg/icon_15.svg",
+		"//192.168.0.3/files_i_kalygin/projects/vshs_rb_sberbank_pervyj/Исходники/icons/icons _vshs/Pif/svg/icon_14.svg",
+		"//192.168.0.3/files_i_kalygin/projects/vshs_rb_sberbank_pervyj/Исходники/icons/icons _vshs/Pif/svg/icon_13.svg",
+		"//192.168.0.3/files_i_kalygin/projects/vshs_rb_sberbank_pervyj/Исходники/icons/icons _vshs/Pif/svg/icon_12.svg",
+		"//192.168.0.3/files_i_kalygin/projects/vshs_rb_sberbank_pervyj/Исходники/icons/icons _vshs/Pif/svg/icon_11.svg",
+		"//192.168.0.3/files_i_kalygin/projects/vshs_rb_sberbank_pervyj/Исходники/icons/icons _vshs/Pif/svg/icon_10.svg",
+		"//192.168.0.3/files_i_kalygin/projects/vshs_rb_sberbank_pervyj/Исходники/icons/icons _vshs/Pif/svg/icon_09.svg",
+		"//192.168.0.3/files_i_kalygin/projects/vshs_rb_sberbank_pervyj/Исходники/icons/icons _vshs/Pif/svg/icon_08.svg",
+		"//192.168.0.3/files_i_kalygin/projects/vshs_rb_sberbank_pervyj/Исходники/icons/icons _vshs/Pif/svg/icon_07.svg",
+		"//192.168.0.3/files_i_kalygin/projects/vshs_rb_sberbank_pervyj/Исходники/icons/icons _vshs/Pif/svg/icon_06.svg",
+		"//192.168.0.3/files_i_kalygin/projects/vshs_rb_sberbank_pervyj/Исходники/icons/icons _vshs/Pif/svg/icon_05.svg",
+		"//192.168.0.3/files_i_kalygin/projects/vshs_rb_sberbank_pervyj/Исходники/icons/icons _vshs/Pif/svg/icon_04.svg",
+		"//192.168.0.3/files_i_kalygin/projects/vshs_rb_sberbank_pervyj/Исходники/icons/icons _vshs/Pif/svg/icon_03.svg",
+		"//192.168.0.3/files_i_kalygin/projects/vshs_rb_sberbank_pervyj/Исходники/icons/icons _vshs/Pif/svg/icon_02.svg",
+		"//192.168.0.3/files_i_kalygin/projects/vshs_rb_sberbank_pervyj/Исходники/icons/icons _vshs/Pif/svg/icon_01.svg",
+		"//192.168.0.3/files_i_kalygin/projects/vshs_rb_sberbank_pervyj/Исходники/icons/icons _vshs/Pif/icon_01.svg",
+		"//192.168.0.3/files_i_kalygin/projects/vshs_rb_sberbank_pervyj/Исходники/icons/icons _vshs/Pif/icon_25.svg",
+		"//192.168.0.3/files_i_kalygin/projects/vshs_rb_sberbank_pervyj/Исходники/icons/icons _vshs/Pif/icon_24.svg",
+		"//192.168.0.3/files_i_kalygin/projects/vshs_rb_sberbank_pervyj/Исходники/icons/icons _vshs/Pif/icon_23.svg",
+		"//192.168.0.3/files_i_kalygin/projects/vshs_rb_sberbank_pervyj/Исходники/icons/icons _vshs/Pif/icon_22.svg",
+		"//192.168.0.3/files_i_kalygin/projects/vshs_rb_sberbank_pervyj/Исходники/icons/icons _vshs/Pif/icon_21.svg",
+		"//192.168.0.3/files_i_kalygin/projects/vshs_rb_sberbank_pervyj/Исходники/icons/icons _vshs/Pif/icon_20.svg",
+		"//192.168.0.3/files_i_kalygin/projects/vshs_rb_sberbank_pervyj/Исходники/icons/icons _vshs/Pif/icon_19.svg",
+		"//192.168.0.3/files_i_kalygin/projects/vshs_rb_sberbank_pervyj/Исходники/icons/icons _vshs/Pif/icon_18.svg",
+		"//192.168.0.3/files_i_kalygin/projects/vshs_rb_sberbank_pervyj/Исходники/icons/icons _vshs/Pif/icon_17.svg",
+		"//192.168.0.3/files_i_kalygin/projects/vshs_rb_sberbank_pervyj/Исходники/icons/icons _vshs/Pif/icon_16.svg",
+		"//192.168.0.3/files_i_kalygin/projects/vshs_rb_sberbank_pervyj/Исходники/icons/icons _vshs/Pif/icon_15.svg",
+		"//192.168.0.3/files_i_kalygin/projects/vshs_rb_sberbank_pervyj/Исходники/icons/icons _vshs/Pif/icon_14.svg",
+		"//192.168.0.3/files_i_kalygin/projects/vshs_rb_sberbank_pervyj/Исходники/icons/icons _vshs/Pif/icon_13.svg",
+		"//192.168.0.3/files_i_kalygin/projects/vshs_rb_sberbank_pervyj/Исходники/icons/icons _vshs/Pif/icon_12.svg",
+		"//192.168.0.3/files_i_kalygin/projects/vshs_rb_sberbank_pervyj/Исходники/icons/icons _vshs/Pif/icon_11.svg",
+		"//192.168.0.3/files_i_kalygin/projects/vshs_rb_sberbank_pervyj/Исходники/icons/icons _vshs/Pif/icon_10.svg",
+		"//192.168.0.3/files_i_kalygin/projects/vshs_rb_sberbank_pervyj/Исходники/icons/icons _vshs/Pif/icon_09.svg",
+		"//192.168.0.3/files_i_kalygin/projects/vshs_rb_sberbank_pervyj/Исходники/icons/icons _vshs/Pif/icon_08.svg",
+		"//192.168.0.3/files_i_kalygin/projects/vshs_rb_sberbank_pervyj/Исходники/icons/icons _vshs/Pif/icon_07.svg",
+		"//192.168.0.3/files_i_kalygin/projects/vshs_rb_sberbank_pervyj/Исходники/icons/icons _vshs/Pif/icon_06.svg",
+		"//192.168.0.3/files_i_kalygin/projects/vshs_rb_sberbank_pervyj/Исходники/icons/icons _vshs/Pif/icon_05.svg",
+		"//192.168.0.3/files_i_kalygin/projects/vshs_rb_sberbank_pervyj/Исходники/icons/icons _vshs/Pif/icon_04.svg",
+		"//192.168.0.3/files_i_kalygin/projects/vshs_rb_sberbank_pervyj/Исходники/icons/icons _vshs/Pif/icon_03.svg",
+		"//192.168.0.3/files_i_kalygin/projects/vshs_rb_sberbank_pervyj/Исходники/icons/icons _vshs/Pif/icon_02.svg",
+		"/C/Users/moray/OneDrive/Documents/ImageSpark/чат РБ.txt",
+		"/C/Users/moray/Desktop/они имеет виду что пользователь несколько раз прох",
+		"/C/Users/moray/Desktop/answered.txt",
+		"/C/Users/moray/OneDrive/Documents/ImageSpark/Курсометр/Бриф по созданию сайта.txt",
+		"/C/Users/moray/Desktop/time_complited/ftp_file_transfer.php",
+		"/C/Users/moray/Desktop/Данные для агрегации/Дата завершения курса/Исходные данные/structure.xml",
+		"/C/Users/moray/Desktop/Данные для агрегации/Дата завершения курса/Финальные данные/final.txt",
+		"/C/Users/moray/OneDrive/Documents/ImageSpark/Курсометр/бриф по сайту.txt",
+		"/C/Users/moray/Desktop/index.php",
+		"/C/Users/moray/OneDrive/Documents/Morayg_LAMP.txt",
+		"//192.168.0.3/files_i_kalygin/projects/vshs_rb_sberbank_pervyj/Файлы/Аналитика/1. Концепция/Путь (исходник).xml",
+		"/C/Users/moray/Desktop/или выпилить аватар.txt",
+		"/C/Users/moray/Desktop/session/index.php",
+		"/C/Users/moray/Desktop/Новый текстовый документ.txt",
+		"/C/Users/moray/AppData/Local/Packages/Microsoft.SkypeApp_kzf8qxf38zg5c/LocalState/Downloads/structure.xml",
+		"/C/Users/moray/Desktop/time_complited/index.php",
+		"/D/php_ver.php",
+		"/C/Users/moray/Downloads/csv/index.php",
+		"/D/salesbox.csv",
+		"/D/index.php",
+		"/C/Users/moray/Desktop/Для доступа к MySQL",
+		"/C/Users/moray/OneDrive/Documents/ImageSpark/Трек развития.txt",
+		"/C/Users/moray/OneDrive/Documents/ImageSpark/Курсометр/Необходимо реализовать демо-стенд, с курсом КБП, в",
+		"/C/Users/moray/AppData/Local/lxss/home/Morayg/imagespark.pub",
+		"/C/Users/moray/OneDrive/Documents/ImageSpark/бриф по сайту.txt",
+		"/C/Users/moray/Desktop/разработка лендинга для курсометра.txt",
+		"/D/Games/Steam/steamapps/common/Heroes of Might and Magic 5/Editor/CameraExporter.xml",
+		"/C/Users/moray/Desktop/или выпилить аватар",
+		"/C/Users/moray/Desktop/Трек развития.txt",
+		"/C/Users/moray/AppData/Local/Temp/error068040_01.xml",
+		"/C/Users/moray/Desktop/time_complited.php"
+	],
+	"find":
+	{
+		"height": 52.0
+	},
+	"find_in_files":
+	{
+		"height": 158.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"time",
+			"dead",
+			"async",
+			"read",
+			"\t\t\n",
+			".get",
+			".statusCode",
+			"defect",
+			"nbsp",
+			"weight",
+			"0,1",
+			" ",
+			"weight",
+			"smc.version",
+			"smc.version = \"0\"",
+			"pay_bonus",
+			".TASK_TYPE_SOUVENIR."
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "index.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9091,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1726,
+								1726
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 825.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "readme.txt",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 321,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								9,
+								9
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 30.0
+	},
+	"input":
+	{
+		"height": 46.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": false,
+	"output.exec":
+	{
+		"height": 65.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.nodejs":
+	{
+		"height": 174.0
+	},
+	"pinned_build_system": "Packages/Nodejs/Nodejs.sublime-build",
+	"project": "lrs_verifer.sublime-project",
+	"replace":
+	{
+		"height": 55.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 625.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 475.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 188.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
