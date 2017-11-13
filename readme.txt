@@ -7,8 +7,9 @@
 
 Данные в входном файле должны быть в формате:
 //номера столбцов в csv
-var actor = 1;
-var verb = 2;
-var timestamp = 3;
-var success = 4;
-var object = 5;
+id стейтмента = 1 столбец;
+id пользователя = 2 столбец;
+verb = 3 столбец;
+timestamp = 4 столбец;
+success = 5 столбец;
+object = 6 столбец;
