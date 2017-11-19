@@ -38,13 +38,26 @@ var interacted = 'http://adlnet.gov/expapi/verbs/interacted';
 var initialized = 'http://adlnet.gov/expapi/verbs/initialized';
 var waived = 'https://w3id.org/xapi/adl/verbs/waived';
 */
-//поиск значения в первой ячейке вложенных массивах
+//поиск значения в первой ячейке вложенных массивов
 function find(array, value) {
 	for (var i = 0; i < array.length; i++) {
     	if (array[i][0] === value) return i;
     };
     return -1;
 };
+
+//функция ParseData
+function ParseData(time) {
+	var date = new Date(time);
+    var hours = date.getHours();
+    var minutes = date.getMinutes();
+    var seconds = date.getSeconds();
+    var day = date.getDate();
+    var month = date.getMonth();
+    var year = date.getFullYear();
+    return day + "." + month + "." + year + " " + hours + ":" + minutes + ":" + seconds;
+}
+
 
 //обработчик количества сессий, запускает выгрузку
 function session_count(session) {
@@ -198,7 +211,7 @@ function users_success(structure_arr, users_obj) {
   					return 0;
 				})
 				//console.log([key, user_passed[/*user_passed.length - 1*/0]['obj'], user_passed[/*user_passed.length - 1*/0]['time']])
-				res.push([key, user_passed[user_passed.length - 1]['obj'], user_passed[user_passed.length - 1]['time']]);
+				res.push([key, user_passed[user_passed.length - 1]['obj'], ParseData(user_passed[user_passed.length - 1]['time'])]);
 			};
 		};
 	};
