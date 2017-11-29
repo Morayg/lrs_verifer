@@ -38,15 +38,17 @@ var interacted = 'http://adlnet.gov/expapi/verbs/interacted';
 var initialized = 'http://adlnet.gov/expapi/verbs/initialized';
 var waived = 'https://w3id.org/xapi/adl/verbs/waived';
 */
-//поиск значения в первой ячейке вложенных массивов
-function find(array, value) {
-	for (var i = 0; i < array.length; i++) {
-    	if (array[i][0] === value) return i;
-    };
-    return -1;
+
+function add_zero_to_one(value) {
+	if (0 < value < 10) {
+		var value = '0' + value;
+		return value;
+	} else {
+		return value;
+	};
 };
 
-//функция ParseData
+//функция ParseData для перевода time stamp в читаемый вид
 function ParseData(time) {
 	var date = new Date(time);
     var hours = date.getHours();
@@ -55,23 +57,59 @@ function ParseData(time) {
     var day = date.getDate();
     var month = date.getMonth();
     var year = date.getFullYear();
-    return day + "." + month + "." + year + " " + hours + ":" + minutes + ":" + seconds;
+    return add_zero_to_one(day) + "." + add_zero_to_one(month) + "." + add_zero_to_one(year) + " " + add_zero_to_one(hours) + ":" + add_zero_to_one(minutes) + ":" + add_zero_to_one(seconds);
 }
 
 
 //обработчик количества сессий, запускает выгрузку
 function session_count(session) {
 	var i = 0;
+	//поиск значения в первой ячейке вложенных массивов
+	function find(array, value) {
+		for (var i = 0; i < array.length; i++) {
+    		if (array[i][0] === value) return i;
+    	};
+    	return -1;
+	};
 	while (i < (session.length)) {
-		if (find(res, session[i][0]) == -1) {
-			res.push([session[i][0], 1, session[i][1]])
+		if (find(res, session[i][0]['name']) == -1) {
+			res.push([session[i][0]['name'], 1, session[i][1]])
 		} else {
 		var u = 0;
 			while (u < (session.length)) {
-				if (session[i][0] == session[u][0]) {
+				if (session[i][0]['name'] == session[u][0]['name']) {
 					//console.log(find(res, session[i][0]));
-					res[find(res, session[u][0])][1]++;
-					res[find(res, session[u][0])][2] = res[find(res, session[u][0])][2] + session[u][1];
+					res[find(res, session[u][0]['name'])][1]++;
+					res[find(res, session[u][0]['name'])][2] = res[find(res, session[u][0]['name'])][2] + session[u][1];
+				};
+			u++;
+			};
+		};
+	i++;
+	//console.log(res.length);
+	};
+	csv_to_out(ans2, res);
+};
+
+function attempion_count(attempts) {
+	//console.log(attempts);
+	var i = 0;
+	function find(array, value) {
+		for (var i = 0; i < array.length; i++) {
+    		if (array[i][0] === value) return i;
+    	};
+    	return -1;
+	};
+	while (i < (attempts.length)) {
+		if (find(res, attempts[i][0]) == -1) {
+			res.push([attempts[i][0]['name'], attempts[i][0]['object'], 1, attempts[i][1]])
+		} else {
+		var u = 0;
+			while (u < (attempts.length)) {
+				if (attempts[i][0] == attempts[u][0]) {
+					//console.log(find(res, attempts[i][0]));
+					res[find(res, attempts[u][0])][2]++;
+					res[find(res, attempts[u][0])][3] = res[find(res, attempts[u][0])][3] + attempts[u][1];
 				};
 			u++;
 			};
@@ -83,25 +121,47 @@ function session_count(session) {
 };
 
 //обработчик попыток, получает массив, записывает попытки, запускает обработчик сессий
-function worker_attempt(data_csv) {
+function worker_attempt(data_csv, control) {
 	var i = 0;
 	//ищем сессии одного пользователя не более 30 минут, привязанные в launched
 	i = 0;
+	function controller_exited(control) {
+		if (control == 'session') {
+			return (data_csv[a][verb] != exited);
+		} else if (control == 'attempts') {
+			return true;
+		};
+	};
+	function controller_activity(data_a, data_i, control) {
+		if (control == 'session') {
+			return true;
+		} else if (control == 'attempts') {
+			return (data_a == data_i);
+		};
+	};
+	function controller_launched(data, control) {
+		if (control == 'session') {
+			return data == launched;
+		} else if (control == 'attempts') {
+			return true;
+		};
+	};
 	while (i < data_csv.length - 1) {
 		//console.log('i' + i);
-		if (data_csv[i][verb] == launched && data_csv[i]['marked'] != true) {
+		if (controller_launched(data_csv[i][verb], control) && data_csv[i]['marked'] != true) {
+			data_csv[i]['marked'] = true;
 			var temp_session = [];
-			temp_session.push(data_csv[i][actor]);
+			temp_session.push({name: data_csv[i][actor], object: data_csv[i][object]});
 			var a = i;
 			do {
 				a++;
-				if  (data_csv[a][actor] == data_csv[i][actor] ) {
+				if  (data_csv[a][actor] == data_csv[i][actor] && controller_activity(data_csv[a][object], data_csv[i][object], control)) {
 					data_csv[a]['marked'] = true;
 					//console.log('i' + i + ' ' + 'a' + a);
 					temp_session.push(data_csv[i][timestamp] - data_csv[a][timestamp]);
 					var temp_a = data_csv[a][timestamp];
 				};
-			} while (a < (data_csv.length - 1) && ((data_csv[a - 1][timestamp] - data_csv[a][timestamp]) <= length_session && data_csv[a][verb] != exited));
+			} while (a < (data_csv.length - 1) && ((data_csv[a - 1][timestamp] - data_csv[a][timestamp]) <= length_session) && controller_exited(control));
 			var u = 1;
 			var sum_session = 0;
 			while (u < (temp_session.length)) {
@@ -115,11 +175,16 @@ function worker_attempt(data_csv) {
 		}; 
 		i++;
 	};
-	session_count(result);
+	if (control == 'session') {
+		session_count(result);
+	} else if (control == 'attempts') {
+		attempion_count(result);
+	};
+	
 };
 
 //функция получает URL возвращает массив с statement, запускает обработчик попыток
-function csv_to_in(url_in, callback) {
+function csv_to_in(url_in, callback, control) {
 	var stream = fs.createReadStream(url_in);
 	csv
 	.fromStream(stream)
@@ -143,10 +208,11 @@ function csv_to_in(url_in, callback) {
     			return -1;
   			}else return 0;
 			});
-		callback(csv_in);
+		callback(csv_in, control);
 	});
-
 };
+
+
 
 //получает массив  - записывает в URL
 function csv_to_out(url_out, output_stream) {
@@ -280,10 +346,23 @@ const rl = readline.createInterface({
 	output: process.stdout
 });
 
-rl.question('Do you want to count (C)ompletion or (A)ttempts? (c/a)', (answer_work) => {
+rl.question('Do you want to count (S)session, (C)ompletion or (A)ttempts? (s/c/a)', (answer_work) => {
 	
 	if (answer_work === 'A' || answer_work === 'a') {
-		//рассчитываем количество и время сессий пользователей
+		//рассчитываем количество и время попыток пользователей
+		rl.question('Where I can find file whis statements on one activity  (.csv)? ', (answer1) => {
+			rl.question('Where I can put results (.csv)? ', (answer2) => {
+        		console.log('Your statements in: ' + answer1);
+	        	console.log('Result will put to: ' + answer2)
+	        	var ans1 = answer1;
+	        	ans2 = answer2;
+	        	//запускаем обраотку
+	        	csv_to_in(ans1, worker_attempt, 'attempts');
+	        	rl.close();
+	        });
+		});
+	} else if (answer_work === 'S' || answer_work === 's') {
+		//рассчитываем количество и время попыток пользователей
 		rl.question('Where I can find file whis statements (.csv)? ', (answer1) => {
 			rl.question('Where I can put results (.csv)? ', (answer2) => {
         		console.log('Your statements in: ' + answer1);
@@ -291,7 +370,7 @@ rl.question('Do you want to count (C)ompletion or (A)ttempts? (c/a)', (answer_wo
 	        	var ans1 = answer1;
 	        	ans2 = answer2;
 	        	//запускаем обраотку
-	        	csv_to_in(ans1, worker_attempt);
+	        	csv_to_in(ans1, worker_attempt, 'session');
 	        	rl.close();
 	        });
 		});
