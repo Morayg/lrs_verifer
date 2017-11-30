@@ -96,22 +96,26 @@ function attempion_count(attempts) {
 	var i = 0;
 	function find(array, value) {
 		for (var i = 0; i < array.length; i++) {
-    		if (array[i][0] === value) return i;
+			if (array[i][0] != undefined) {
+    			if (array[i][0] == value['name'] && array[i][1] == value['object']) {return i};
+    		};
     	};
     	return -1;
 	};
 	while (i < (attempts.length)) {
+		//console.log(attempts[i][0]['name'] + ' ' + attempts[i][0]['object']);
 		if (find(res, attempts[i][0]) == -1) {
 			res.push([attempts[i][0]['name'], attempts[i][0]['object'], 1, attempts[i][1]])
 		} else {
-		var u = 0;
-			while (u < (attempts.length)) {
-				if (attempts[i][0] == attempts[u][0]) {
+		var u = i;
+		//console.log(attempts[u][0]['name'] + ' ' + attempts[u][0]['object'])
+			while (u < attempts.length - 1) {
+				u++;
+				if (attempts[i][0]['name'] == attempts[u][0]['name'] && attempts[i][0]['object'] == attempts[u][0]['object']) {
 					//console.log(find(res, attempts[i][0]));
-					res[find(res, attempts[u][0])][2]++;
-					res[find(res, attempts[u][0])][3] = res[find(res, attempts[u][0])][3] + attempts[u][1];
+					res[find(res, attempts[i][0])][2]++;
+					res[find(res, attempts[i][0])][3] = res[find(res, attempts[i][0])][3] + attempts[i][1];
 				};
-			u++;
 			};
 		};
 	i++;
