@@ -63,7 +63,6 @@ function ParseData(time) {
 
 //обработчик количества сессий, запускает выгрузку
 function session_count(session) {
-	var i = 0;
 	//поиск значения в первой ячейке вложенных массивов
 	function find(array, value) {
 		for (var i = 0; i < array.length; i++) {
@@ -71,21 +70,18 @@ function session_count(session) {
     	};
     	return -1;
 	};
-	while (i < (session.length)) {
+	for (var i = 0; i < session.length; i++) {
 		if (find(res, session[i][0]['name']) == -1) {
 			res.push([session[i][0]['name'], 1, session[i][1]])
 		} else {
-		var u = 0;
-			while (u < (session.length)) {
+			for (var u = 0; u < (session.length); u++) {
 				if (session[i][0]['name'] == session[u][0]['name']) {
 					//console.log(find(res, session[i][0]));
 					res[find(res, session[u][0]['name'])][1]++;
 					res[find(res, session[u][0]['name'])][2] = res[find(res, session[u][0]['name'])][2] + session[u][1];
 				};
-			u++;
 			};
 		};
-	i++;
 	//console.log(res.length);
 	};
 	csv_to_out(ans2, res);
@@ -93,7 +89,6 @@ function session_count(session) {
 
 function attempion_count(attempts) {
 	//console.log(attempts);
-	var i = 0;
 	function find(array, value) {
 		for (var i = 0; i < array.length; i++) {
 			if (array[i][0] != undefined) {
@@ -102,15 +97,14 @@ function attempion_count(attempts) {
     	};
     	return -1;
 	};
-	while (i < (attempts.length)) {
+	for (var i = 0; i < (attempts.length); i++) {
 		//console.log(attempts[i][0]['name'] + ' ' + attempts[i][0]['object']);
 		if (find(res, attempts[i][0]) == -1) {
 			res.push([attempts[i][0]['name'], attempts[i][0]['object'], 1, attempts[i][1]])
 		} else {
-		var u = i;
+		
 		//console.log(attempts[u][0]['name'] + ' ' + attempts[u][0]['object'])
-			while (u < attempts.length - 1) {
-				u++;
+			for (var u = i + 1; u < attempts.length - 1; u++) {
 				if (attempts[i][0]['name'] == attempts[u][0]['name'] && attempts[i][0]['object'] == attempts[u][0]['object']) {
 					//console.log(find(res, attempts[i][0]));
 					res[find(res, attempts[i][0])][2]++;
@@ -118,7 +112,6 @@ function attempion_count(attempts) {
 				};
 			};
 		};
-	i++;
 	//console.log(res.length);
 	};
 	csv_to_out(ans2, res);
@@ -285,7 +278,7 @@ function users_success(structure_arr, users_obj) {
 			};
 		};
 	};
-	console.log(res);
+	//console.log(res);
 	csv_to_out(ans2, res);
 };
 
