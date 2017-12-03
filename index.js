@@ -40,7 +40,7 @@ var waived = 'https://w3id.org/xapi/adl/verbs/waived';
 */
 
 function add_zero_to_one(value) {
-	if (0 < value < 10) {
+	if (value >=0 && value < 10) {
 		var value = '0' + value;
 		return value;
 	} else {

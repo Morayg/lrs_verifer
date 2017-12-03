@@ -7,9 +7,9 @@
 
 Данные в входном файле должны быть в формате:
 //номера столбцов в csv
-id стейтмента = 1 столбец;
-id пользователя = 2 столбец;
-verb = 3 столбец;
-timestamp = 4 столбец;
-success = 5 столбец;
-object = 6 столбец;
+id стейтмента (statement.id) = 1 столбец;
+id пользователя (statement.actor.account.name) = 2 столбец;
+verb (statement.verb.id) = 3 столбец;
+timestamp (statement.timestamp) = 4 столбец;
+success (statement.result.success) = 5 столбец;
+object (statement.object.id) = 6 столбец;
