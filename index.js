@@ -64,12 +64,6 @@ function ParseData(time) {
 //обработчик количества сессий, запускает выгрузку
 function session_count(session) {
 	//поиск значения в первой ячейке вложенных массивов
-	function find(array, value) {
-		for (var i = 0; i < array.length; i++) {
-    		if (array[i][0] === value) return i;
-    	};
-    	return -1;
-	};
 	for (var i = 0; i < session.length; i++) {
 		if (find(res, session[i][0]['name']) == -1) {
 			res.push([session[i][0]['name'], 1, session[i][1]])
@@ -249,7 +243,13 @@ function sort_the_arr(arr, key) {
 
 //сопоставляет passed к элементам структуры по каждому актеру
 function users_success(structure_arr, users_obj) {
-	//console.log(users_obj['266752'][3]['time']);
+	function find(array, value) {
+		for (var i = 0; i < array.length; i++) {
+    		if (array[i]['obj'] === value) return i;
+    	};
+    	return -1;
+	};
+	//console.log(structure_arr);
 	for (key in  users_obj) {
 		var i = 0;
 		var user_passed = [];
@@ -257,7 +257,7 @@ function users_success(structure_arr, users_obj) {
 			var a = 0;
 			while (a < users_obj[key].length) {
 				//console.log(name_course + structure_arr[i]['id']);
-				if (users_obj[key][a]['obj'] == name_course + structure_arr[i]['id']) {user_passed.push(users_obj[key][a])};
+				if (users_obj[key][a]['obj'] == name_course + structure_arr[i]['id'] && find(user_passed, users_obj[key][a]['obj']) == -1) {user_passed.push(users_obj[key][a])};
 				a++;
 			};
 			i++;
