@@ -64,6 +64,12 @@ function ParseData(time) {
 //обработчик количества сессий, запускает выгрузку
 function session_count(session) {
 	//поиск значения в первой ячейке вложенных массивов
+	function find(array, value) {
+		for (var i = 0; i < array.length; i++) {
+ 			if (array[i][0] === value) return i;
+ 		};
+	return -1;
+-	};
 	for (var i = 0; i < session.length; i++) {
 		if (find(res, session[i][0]['name']) == -1) {
 			res.push([session[i][0]['name'], 1, session[i][1]])
