@@ -69,7 +69,7 @@ function session_count(session) {
  			if (array[i][0] === value) return i;
  		};
 	return -1;
--	};
+	};
 	for (var i = 0; i < session.length; i++) {
 		if (find(res, session[i][0]['name']) == -1) {
 			res.push([session[i][0]['name'], 1, session[i][1]])

@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "fast-csv": "^2.4.1",
-    "inspect": "0.0.2"
+    "inspect": "0.0.2",
+    "xml2js": "^0.4.19"
   }
 }
