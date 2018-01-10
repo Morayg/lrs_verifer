@@ -55,7 +55,7 @@ function ParseData(time) {
     var minutes = date.getMinutes();
     var seconds = date.getSeconds();
     var day = date.getDate();
-    var month = date.getMonth();
+    var month = date.getMonth() + 1;
     var year = date.getFullYear();
     return add_zero_to_one(day) + "." + add_zero_to_one(month) + "." + add_zero_to_one(year) + " " + add_zero_to_one(hours) + ":" + add_zero_to_one(minutes) + ":" + add_zero_to_one(seconds);
 }
