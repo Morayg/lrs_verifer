@@ -181,7 +181,7 @@ function worker_attempt(data_csv, control) {
 };
 
 //функция получает URL возвращает массив с statement, запускает обработчик попыток
-function csv_to_in(url_in, callback, control) {
+function csv_to_in(url_in, callback) {
 	var stream = fs.createReadStream(url_in);
 	csv
 	.fromStream(stream)
@@ -205,7 +205,7 @@ function csv_to_in(url_in, callback, control) {
     			return -1;
   			}else return 0;
 			});
-		callback(csv_in, control);
+		callback(csv_in);
 	});
 };
 
@@ -256,14 +256,15 @@ function users_success(structure_arr, users_obj) {
     	return -1;
 	};
 	//console.log(structure_arr);
+	//console.log(users_obj);
 	for (key in  users_obj) {
 		var i = 0;
 		var user_passed = [];
 		while (i < structure_arr.length) {
 			var a = 0;
 			while (a < users_obj[key].length) {
-				//console.log(name_course + structure_arr[i]['id']);
-				if (users_obj[key][a]['obj'] == name_course + structure_arr[i]['id'] && find(user_passed, users_obj[key][a]['obj']) == -1) {user_passed.push(users_obj[key][a])};
+				//console.log(name_course + structure_arr[i]);
+				if (users_obj[key][a]['obj'] == name_course + structure_arr[i] && find(user_passed, users_obj[key][a]['obj']) == -1) {user_passed.push(users_obj[key][a])};
 				a++;
 			};
 			i++;
@@ -291,40 +292,42 @@ function users_success(structure_arr, users_obj) {
 //получает масссив со стейтментами и в объект items передает свойства id_user : [{object_passed, timestamp_passed}, {object_passed, timestamp_passed}...]
 function find_passed_to_element(arr_in) {
 	//console.log(arr_in);
+	//console.log(items);
 	var i = 0;
 	while (i < (arr_in.length)) {
 		//arr_in[i][timestamp] = Date.parse(arr_in[i][timestamp]);
 		if (arr_in[i][verb] == passed && arr_in[i][success] == 1) {
 			//console.log(arr_in[i][actor]);
-			(arr_in[i][actor] in users) ? users[arr_in[i][actor]].push({obj: arr_in[i][object], time: arr_in[i][timestamp]}) : users[arr_in[i][actor]] = [{obj: arr_in[i][object], time: arr_in[i][timestamp]}];
+			if (arr_in[i][actor] in users) {
+				users[arr_in[i][actor]].push({obj: arr_in[i][object], time: arr_in[i][timestamp]});
+			} else {
+				users[arr_in[i][actor]] = [{obj: arr_in[i][object], time: arr_in[i][timestamp]}];
+			};
 		};
 		i++;
 	};
 	//console.log(items);
+	//console.log(users);
 	users_success(items, users);
 };
 
 //рекурсивно проверяет наличие указанного элемента в указанном объекте и возвращает его в массив items
-function find_element_in_object(arr, name_element, name_target) {
-	var i = 0;
-	while (i < arr.length) {
-			if (Array.isArray(arr[i]) === true) {
-				a = 0;
-				while (a < arr[i].length) {
-					items.push(arr[i][a][name])
-					a++;
-				};
-			} else if (Array.isArray(arr[i]) === false) {
-				for (key in arr[i]) {
-					//console.log(key + ' = ' + arr[i][key])
-					if (key === name_element) {
-						find_element_in_object(arr[i][key], name_element, name_target);
-					} else if (key === name_target) {
-						items.push(arr[i][key]);
-				};
+function find_element_in_object(arr) {
+	for (key in arr) {
+		//console.log(key + ' = ' + arr[key]);
+		if (key == 'course') {
+			name_course = arr[key][0]['$']['id'];
+			//console.log('COURSE:' + name_course);
+		};
+		if (key == 'item') {
+			for (var i = 0; i < arr[key].length; i++) {
+				if (arr[key][i]['$']['id'] != undefined) {items.push(arr[key][i]['$']['id']);}
 			};
 		};
-		i++;
+		if (typeof(arr[key]) == 'object') {
+			//console.log('down');
+			find_element_in_object(arr[key]);
+		};
 	};
 };
 
@@ -334,9 +337,9 @@ function xml_to_in(url_in) {
 	fs.readFile(url_in, function(err, data) {
     	parser.parseString(data, function (err, result_xml) {
         	//console.log(xml_in.manifest.courses[0].course[0].content[0].item);
-        	var path = result_xml.manifest.courses[0].course[0].content;
+        	var path = result_xml/*.manifest.courses[0].course[0].content*/;
         	//console.log(path[0].item[0].item[0].item[0].item[2])
-        	find_element_in_object(path, 'item', '$');
+        	find_element_in_object(path);
         	csv_to_in(ans1, find_passed_to_element);
         	//console.log(items);
     	});
@@ -382,9 +385,9 @@ rl.question('Do you want to count (S)session, (C)ompletion or (A)ttempts? (s/c/a
 		rl.question('Where I can find file whis statements (.csv)? ', (answer1) => {
 			rl.question('Where I can find file whis structure (.xml)? ', (answer_str) => {
 				rl.question('Where I can put results (.csv)? ', (answer2) => {
-					rl.question('How named you course? (exm: https://crmm.ru/xapi/courses/sbfba) ', (answer_name) => {
+					//rl.question('How named you course? (exm: https://crmm.ru/xapi/courses/sbfba) ', (answer_name) => {
 	       		 		console.log('Result will put to: ' + answer2);
-	       		 		name_course = answer_name;
+	       		 		//name_course = answer_name;
 	        			ans1 = answer1;
 	        			ans_s = answer_str;
 	        			ans2 = answer2;
@@ -392,7 +395,7 @@ rl.question('Do you want to count (S)session, (C)ompletion or (A)ttempts? (s/c/a
 	        			//запускаем обработку
 	        			xml_to_in(ans_s);
 	        			rl.close();
-	        		});
+	        		//});
 				});		
 			});
 		});
