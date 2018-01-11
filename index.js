@@ -181,7 +181,7 @@ function worker_attempt(data_csv, control) {
 };
 
 //функция получает URL возвращает массив с statement, запускает обработчик попыток
-function csv_to_in(url_in, callback) {
+function csv_to_in(url_in, callback, control) {
 	var stream = fs.createReadStream(url_in);
 	csv
 	.fromStream(stream)
@@ -205,7 +205,7 @@ function csv_to_in(url_in, callback) {
     			return -1;
   			}else return 0;
 			});
-		callback(csv_in);
+		callback(csv_in, control);
 	});
 };
 
