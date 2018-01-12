@@ -16,7 +16,6 @@ var ans_s;
 var ans2;
 var name_course;
 
-
 //данные использующиеся в разных функциях
 var res = [];
 var result = [];
