@@ -288,7 +288,7 @@ function users_success(structure_arr, users_obj) {
 	csv_to_out(ans2, res);
 };
 
-//получает масссив со стейтментами и в объект items передает свойства id_user : [{object_passed, timestamp_passed}, {object_passed, timestamp_passed}...]
+//получает масссив со стейтментами и в объект users передает свойства id_user : [{object_passed, timestamp_passed}, {object_passed, timestamp_passed}...]
 function find_passed_to_element(arr_in) {
 	//console.log(arr_in);
 	//console.log(items);
@@ -313,6 +313,7 @@ function find_passed_to_element(arr_in) {
 //рекурсивно проверяет наличие указанного элемента в указанном объекте и возвращает его в массив items
 function find_element_in_object(arr) {
 	for (key in arr) {
+		var exit = false;
 		//console.log(key + ' = ' + arr[key]);
 		if (key == 'course') {
 			name_course = arr[key][0]['$']['id'];
@@ -320,11 +321,19 @@ function find_element_in_object(arr) {
 		};
 		if (key == 'item') {
 			for (var i = 0; i < arr[key].length; i++) {
-				if (arr[key][i]['$']['id'] != undefined) {items.push(arr[key][i]['$']['id']);}
+				var weight = 1;
+				try {
+					//console.log(arr[key][i]['config'][0]['variable'][0]['$']['name']);
+					if (arr[key][i]['config'][0]['variable'][0]['$']['name'] == 'weight') {weight = arr[key][i]['config'][0]['variable'][0]['_']};
+				} catch (err) {
+					//console.log(err);
+				};
+				if (arr[key][i]['$']['id'] != undefined && weight != 0) {items.push(arr[key][i]['$']['id'])};
+				if (weight == 0) {exit = true};
 			};
 		};
-		if (typeof(arr[key]) == 'object') {
-			//console.log('down');
+		if (typeof(arr[key]) == 'object' && exit == false) {
+			//console.log('down');	
 			find_element_in_object(arr[key]);
 		};
 	};
