@@ -32,10 +32,10 @@ var error_message1 = 'You wrote an incorrect answer. Programm ended';
 var launched = 'http://adlnet.gov/expapi/verbs/launched';
 var exited = 'http://adlnet.gov/expapi/verbs/exited';
 var passed = 'http://adlnet.gov/expapi/verbs/passed';
+var waived = 'https://w3id.org/xapi/adl/verbs/waived';
 /*
 var interacted = 'http://adlnet.gov/expapi/verbs/interacted';
 var initialized = 'http://adlnet.gov/expapi/verbs/initialized';
-var waived = 'https://w3id.org/xapi/adl/verbs/waived';
 */
 
 function add_zero_to_one(value) {
@@ -295,7 +295,7 @@ function find_passed_to_element(arr_in) {
 	var i = 0;
 	while (i < (arr_in.length)) {
 		//arr_in[i][timestamp] = Date.parse(arr_in[i][timestamp]);
-		if (arr_in[i][verb] == passed && arr_in[i][success] == 1) {
+		if ((arr_in[i][verb] == passed && arr_in[i][success] == 1) || arr_in[i][verb] == waived) {
 			//console.log(arr_in[i][actor]);
 			if (arr_in[i][actor] in users) {
 				users[arr_in[i][actor]].push({obj: arr_in[i][object], time: arr_in[i][timestamp]});
