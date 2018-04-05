@@ -99,9 +99,8 @@ function attempion_count(attempts) {
 	for (var i = 0; i < (attempts.length); i++) {
 		//console.log(attempts[i][0]['name'] + ' ' + attempts[i][0]['object']);
 		if (find(res, attempts[i][0]) == -1) {
-			res.push([attempts[i][0]['name'], attempts[i][0]['object'], 1, attempts[i][1], attempts[i][2]])
+			res.push([attempts[i][0]['name'], attempts[i][0]['object'], 1, attempts[i][1]])
 		} else {
-		
 		//console.log(attempts[u][0]['name'] + ' ' + attempts[u][0]['object'])
 			for (var u = i + 1; u < attempts.length - 1; u++) {
 				if (attempts[i][0]['name'] == attempts[u][0]['name'] && attempts[i][0]['object'] == attempts[u][0]['object']) {
@@ -116,6 +115,17 @@ function attempion_count(attempts) {
 	csv_to_out(ans2, res);
 };
 
+function final_attempion_count(attempts) {
+	//console.log(attempts);
+	for (var i = 0; i < (attempts.length); i++) {
+		//console.log(attempts[i][0]['name'] + ' ' + attempts[i][0]['object']);
+		if (attempts[i][2] == 'passed') {
+		res.push([attempts[i][0]['name'], attempts[i][0]['object'], attempts[i][1], attempts[i][2]])
+		};
+	};
+	csv_to_out(ans2, res);
+};
+
 //обработчик попыток, получает массив, записывает попытки, запускает обработчик сессий
 function worker_attempt(data_csv, control) {
 	var i = 0;
@@ -124,21 +134,21 @@ function worker_attempt(data_csv, control) {
 	function controller_exited(control) {
 		if (control == 'session') {
 			return (data_csv[a][verb] != exited);
-		} else if (control == 'attempts') {
+		} else if (control == 'attempts' || control == 'final_att') {
 			return true;
 		};
 	};
 	function controller_activity(data_a, data_i, control) {
 		if (control == 'session') {
 			return true;
-		} else if (control == 'attempts') {
+		} else if (control == 'attempts' || control == 'final_att') {
 			return (data_a == data_i);
 		};
 	};
 	function controller_launched(data, control) {
 		if (control == 'session') {
 			return data == launched;
-		} else if (control == 'attempts') {
+		} else if (control == 'attempts' || control == 'final_att') {
 			return true;
 		};
 	};
@@ -180,6 +190,8 @@ function worker_attempt(data_csv, control) {
 		session_count(result);
 	} else if (control == 'attempts') {
 		attempion_count(result);
+	} else if (control == 'final_att') {
+		final_attempion_count(result);
 	};
 	
 };
@@ -365,7 +377,7 @@ const rl = readline.createInterface({
 	output: process.stdout
 });
 
-rl.question('Do you want to count (S)session, (C)ompletion or (A)ttempts? (s/c/a)', (answer_work) => {
+rl.question('Do you want to count (S)session, (C)ompletion, (F)inal attampts or (A)ttempts? (s/c/f/a)', (answer_work) => {
 	
 	if (answer_work === 'A' || answer_work === 'a') {
 		//рассчитываем количество и время попыток пользователей
@@ -377,6 +389,19 @@ rl.question('Do you want to count (S)session, (C)ompletion or (A)ttempts? (s/c/a
 	        	ans2 = answer2;
 	        	//запускаем обраотку
 	        	csv_to_in(ans1, worker_attempt, 'attempts');
+	        	rl.close();
+	        });
+		});
+	} else if (answer_work === 'F' || answer_work === 'f') {
+		//рассчитываем количество и время сессий пользователей
+		rl.question('Where I can find file whis statements on one activity  (.csv)? ', (answer1) => {
+			rl.question('Where I can put results (.csv)? ', (answer2) => {
+        		console.log('Your statements in: ' + answer1);
+	        	console.log('Result will put to: ' + answer2)
+	        	var ans1 = answer1;
+	        	ans2 = answer2;
+	        	//запускаем обраотку
+	        	csv_to_in(ans1, worker_attempt, 'final_att');
 	        	rl.close();
 	        });
 		});
