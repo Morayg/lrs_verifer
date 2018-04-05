@@ -99,7 +99,7 @@ function attempion_count(attempts) {
 	for (var i = 0; i < (attempts.length); i++) {
 		//console.log(attempts[i][0]['name'] + ' ' + attempts[i][0]['object']);
 		if (find(res, attempts[i][0]) == -1) {
-			res.push([attempts[i][0]['name'], attempts[i][0]['object'], 1, attempts[i][1]])
+			res.push([attempts[i][0]['name'], attempts[i][0]['object'], 1, attempts[i][1], attempts[i][2]])
 		} else {
 		
 		//console.log(attempts[u][0]['name'] + ' ' + attempts[u][0]['object'])
@@ -147,6 +147,7 @@ function worker_attempt(data_csv, control) {
 		if (controller_launched(data_csv[i][verb], control) && data_csv[i]['marked'] != true) {
 			data_csv[i]['marked'] = true;
 			var temp_session = [];
+			var temp_session_passed;
 			temp_session.push({name: data_csv[i][actor], object: data_csv[i][object]});
 			var a = i;
 			do {
@@ -154,6 +155,10 @@ function worker_attempt(data_csv, control) {
 				if  (data_csv[a][actor] == data_csv[i][actor] && controller_activity(data_csv[a][object], data_csv[i][object], control)) {
 					data_csv[a]['marked'] = true;
 					//console.log('i' + i + ' ' + 'a' + a);
+					if (data_csv[a][verb] == passed) {
+						temp_session_passed = 'passed';
+						//console.log('temp_session_passed: ', temp_session_passed);
+					};
 					temp_session.push(data_csv[i][timestamp] - data_csv[a][timestamp]);
 					var temp_a = data_csv[a][timestamp];
 				};
@@ -166,7 +171,7 @@ function worker_attempt(data_csv, control) {
 			};
 			//console.log(sum_session);
  			if (sum_session > 0) {
-			result.push([temp_session[0], sum_session/1000]);
+			result.push([temp_session[0], sum_session/1000, temp_session_passed]);
 			};
 		}; 
 		i++;
@@ -376,7 +381,7 @@ rl.question('Do you want to count (S)session, (C)ompletion or (A)ttempts? (s/c/a
 	        });
 		});
 	} else if (answer_work === 'S' || answer_work === 's') {
-		//рассчитываем количество и время попыток пользователей
+		//рассчитываем количество и время сессий пользователей
 		rl.question('Where I can find file whis statements (.csv)? ', (answer1) => {
 			rl.question('Where I can put results (.csv)? ', (answer2) => {
         		console.log('Your statements in: ' + answer1);
