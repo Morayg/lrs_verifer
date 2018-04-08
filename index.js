@@ -116,11 +116,19 @@ function attempion_count(attempts) {
 };
 
 function final_attempion_count(attempts) {
+	function find(array, value) {
+		for (var i = 0; i < array.length; i++) {
+			if (array[i][0] != undefined) {
+    			if (array[i][0] == value['name'] && array[i][1] == value['object']) {return i};
+    		};
+    	};
+    	return -1;
+	};
 	//console.log(attempts);
 	for (var i = 0; i < (attempts.length); i++) {
 		//console.log(attempts[i][0]['name'] + ' ' + attempts[i][0]['object']);
-		if (attempts[i][2] == 'passed') {
-		res.push([attempts[i][0]['name'], attempts[i][0]['object'], attempts[i][1], attempts[i][2]])
+		if (attempts[i][2] == 'passed' && find(res, attempts[i][0]) == -1) {
+			res.push([attempts[i][0]['name'], attempts[i][0]['object'], attempts[i][1], attempts[i][2]])
 		};
 	};
 	csv_to_out(ans2, res);
